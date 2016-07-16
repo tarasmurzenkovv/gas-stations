@@ -62,7 +62,7 @@ public class DataBaseContextConfiguration {
     }
 
     @Bean
-    public DataSource getDataSource() {    
+    public DataSource getDataSource() {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
         String username = System.getenv("JDBC_DATABASE_USERNAME");
         String password = System.getenv("JDBC_DATABASE_PASSWORD");
@@ -78,7 +78,7 @@ public class DataBaseContextConfiguration {
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.hbm2ddl.import_files", "test_data.sql");
         return properties;
     }
