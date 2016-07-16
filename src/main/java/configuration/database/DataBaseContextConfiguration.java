@@ -53,23 +53,9 @@ public class DataBaseContextConfiguration {
     }
 
     @Bean
-    public BasicDataSource dataSource() {
-        String dbUrl = System.getenv("JDBC_DATABASE_URL");
-        String username = System.getenv("JDBC_DATABASE_USERNAME");
-        String password = System.getenv("JDBC_DATABASE_PASSWORD");
-
-        BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl(dbUrl);
-        basicDataSource.setUsername(username);
-        basicDataSource.setPassword(password);
-
-        return basicDataSource;
-    }
-
-    @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setDataSource(dataSource());
+        transactionManager.setDataSource(getDataSource());
         return transactionManager;
     }
 
@@ -78,7 +64,7 @@ public class DataBaseContextConfiguration {
         // declare properties for c3p0 connection pool
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
-            dataSource.setDriverClass(driverName);
+            dataSource.setDriverClass("org.postgresql.Driver");
         } catch (PropertyVetoException e) {
             // this exception occurs when a property was provided with an invalid value.
             logger.error("Invalid driver was provided for a connection pool");
