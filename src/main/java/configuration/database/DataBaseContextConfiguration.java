@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.test.context.ContextConfiguration;
@@ -52,6 +53,14 @@ public class DataBaseContextConfiguration {
         Object file = entityManagerFactoryBean.getJpaPropertyMap().get("hibernate.hbm2ddl.import_files");
         logger.error("Got the following file to export  " + file);
         return entityManagerFactoryBean;
+    }
+
+    @Bean
+    public LocalSessionFactoryBean localSessionFactoryBean() {
+        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+        localSessionFactoryBean.setDataSource(getDataSource());
+        localSessionFactoryBean.setHibernateProperties(getHibernateProperties());
+        return localSessionFactoryBean;
     }
 
     @Bean
