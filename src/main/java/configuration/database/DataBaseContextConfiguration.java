@@ -83,6 +83,7 @@ public class DataBaseContextConfiguration {
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.hbm2ddl.import_files", "test_data.sql");
+        properties.setProperty("hibernate.connection.url", System.getenv("JDBC_DATABASE_URL"));
         return properties;
     }
 
