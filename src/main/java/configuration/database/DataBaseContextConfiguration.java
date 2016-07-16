@@ -50,7 +50,7 @@ public class DataBaseContextConfiguration {
         entityManagerFactoryBean.setPersistenceProvider(new HibernatePersistenceProvider());
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
         Object file = entityManagerFactoryBean.getJpaPropertyMap().get("hibernate.hbm2ddl.auto");
-        logger.info("Got the following file to export" + file);
+        logger.error("Got the following file to export" + file);
         return entityManagerFactoryBean;
     }
 
@@ -72,9 +72,21 @@ public class DataBaseContextConfiguration {
             logger.error("Invalid driver was provided for a connection pool");
             System.exit(EXIT_STATUS_CODE);
         }
-        dataSource.setJdbcUrl(System.getenv("JDBC_DATABASE_URL"));
-        dataSource.setUser(System.getenv("JDBC_DATABASE_USERNAME"));
-        dataSource.setPassword(System.getenv("JDBC_DATABASE_PASSWORD"));
+        URI dbUri = null;
+        try {
+            dbUri = new URI(System.getenv("DATABASE_URL"));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+        BasicDataSource basicDataSource = new BasicDataSource();
+        basicDataSource.setUrl(dbUrl);
+        basicDataSource.setUsername(username);
+        basicDataSource.setPassword(password);
         return dataSource;
     }
 
@@ -82,7 +94,7 @@ public class DataBaseContextConfiguration {
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.hbm2ddl.import_files", "test_data.sql");
         URI dbUri = null;
         try {
