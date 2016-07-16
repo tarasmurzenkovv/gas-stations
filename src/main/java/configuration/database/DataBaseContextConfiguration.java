@@ -29,7 +29,7 @@ import java.util.Properties;
 @ContextConfiguration
 public class DataBaseContextConfiguration {
     private final static int EXIT_STATUS_CODE = 666;
-    Logger logger = Logger.getLogger(DataBaseContextConfiguration.class);
+    private static final Logger logger = Logger.getLogger(DataBaseContextConfiguration.class);
 
     @Value("${login}")
     private String login;
@@ -48,7 +48,8 @@ public class DataBaseContextConfiguration {
         entityManagerFactoryBean.setPackagesToScan("model");
         entityManagerFactoryBean.setPersistenceProvider(new HibernatePersistenceProvider());
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
-
+        Object file = entityManagerFactoryBean.getJpaPropertyMap().get("hibernate.hbm2ddl.auto");
+        logger.info("Got the following file to export" + file);
         return entityManagerFactoryBean;
     }
 
