@@ -39,7 +39,8 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
 
         http.authorizeRequests()
                 .antMatchers(
-                        "/pages/index.html",
+                        "/",
+                        "/index.html",
                         "/customer_types",
                         "/gender_groups",
                         "/pages/public/**",
