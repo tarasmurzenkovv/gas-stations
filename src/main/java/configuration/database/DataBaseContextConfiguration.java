@@ -1,31 +1,23 @@
 package configuration.database;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:connection_pool.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories("repository")
 @ContextConfiguration
@@ -56,14 +48,6 @@ public class DataBaseContextConfiguration {
     }
 
     @Bean
-    public LocalSessionFactoryBean localSessionFactoryBean() {
-        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-        localSessionFactoryBean.setDataSource(getDataSource());
-        localSessionFactoryBean.setHibernateProperties(getHibernateProperties());
-        return localSessionFactoryBean;
-    }
-
-    @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setDataSource(getDataSource());
@@ -73,6 +57,7 @@ public class DataBaseContextConfiguration {
     @Bean
     public DataSource getDataSource() {
         String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        logger.error("Db url: " + dbUrl);
         String username = System.getenv("JDBC_DATABASE_USERNAME");
         String password = System.getenv("JDBC_DATABASE_PASSWORD");
 
