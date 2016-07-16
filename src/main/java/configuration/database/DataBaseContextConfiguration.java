@@ -50,7 +50,7 @@ public class DataBaseContextConfiguration {
         entityManagerFactoryBean.setPersistenceProvider(new HibernatePersistenceProvider());
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
         Object file = entityManagerFactoryBean.getJpaPropertyMap().get("hibernate.hbm2ddl.auto");
-        logger.error("Got the following file to export" + file);
+        logger.error("Got the following file to export  " + file);
         return entityManagerFactoryBean;
     }
 
