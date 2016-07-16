@@ -41,7 +41,7 @@ public class DataBaseContextConfiguration {
     private String driverName;
 
 
-/*    @Bean
+ @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(getDataSource());
@@ -50,7 +50,7 @@ public class DataBaseContextConfiguration {
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
 
         return entityManagerFactoryBean;
-    }*/
+    }
 
     @Bean
     public BasicDataSource dataSource() {
@@ -84,9 +84,9 @@ public class DataBaseContextConfiguration {
             logger.error("Invalid driver was provided for a connection pool");
             System.exit(EXIT_STATUS_CODE);
         }
-        dataSource.setJdbcUrl(jdbcUrl);
-        dataSource.setUser(login);
-        dataSource.setPassword(password);
+        dataSource.setJdbcUrl(System.getenv("JDBC_DATABASE_URL"));
+        dataSource.setUser(System.getenv("JDBC_DATABASE_USERNAME"));
+        dataSource.setPassword(System.getenv("JDBC_DATABASE_PASSWORD"));
 
         return dataSource;
     }
