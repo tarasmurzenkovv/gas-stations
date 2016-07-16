@@ -41,7 +41,7 @@ public class DataBaseContextConfiguration {
     private String driverName;
 
 
- @Bean
+    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(getDataSource());
@@ -73,20 +73,14 @@ public class DataBaseContextConfiguration {
         dataSource.setJdbcUrl(System.getenv("JDBC_DATABASE_URL"));
         dataSource.setUser(System.getenv("JDBC_DATABASE_USERNAME"));
         dataSource.setPassword(System.getenv("JDBC_DATABASE_PASSWORD"));
-
         return dataSource;
     }
 
 
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("hibernate.properties")) {
-            properties.load(inputStream);
-        } catch (IOException | NullPointerException e) {
-            logger.error("Exception occurred whiles reading property file. Check if the file is in the app context.");
-            System.exit(EXIT_STATUS_CODE);
-        }
-
+        properties.setProperty("hibernate.hbm2ddl.import_files", "test_data.sql");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         return properties;
     }
 
