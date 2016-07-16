@@ -24,17 +24,7 @@ import java.util.Properties;
 public class DataBaseContextConfiguration {
     private final static int EXIT_STATUS_CODE = 666;
     private static final Logger logger = Logger.getLogger(DataBaseContextConfiguration.class);
-
-    @Value("${login}")
-    private String login;
-    @Value("${password}")
-    private String password;
-    @Value("${jdbc_url}")
-    private String jdbcUrl;
-    @Value("${driver_name}")
-    private String driverName;
-
-
+    
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
