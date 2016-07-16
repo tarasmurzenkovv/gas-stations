@@ -80,6 +80,11 @@ public class DataBaseContextConfiguration {
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.hbm2ddl.import_files", "test_data.sql");
+        properties.setProperty("hibernate.connection.url",
+                "jdbc:postgresql://ec2-54-225-121-93.compute-1.amazonaws.com:5432/d7aslo9caothtd?" +
+                        "user=iqljsaydjbvkjl&" +
+                        "password=uN-Z_V3W2VCqTNrDbW_jHyKthj&" +
+                        "ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory");
         return properties;
     }
 
