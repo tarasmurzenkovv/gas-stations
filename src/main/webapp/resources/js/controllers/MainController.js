@@ -1,0 +1,1 @@
+gasStation.controller('MainController', [function () {}]);

@@ -1,0 +1,142 @@
+<div id="menu">
+    <div class="pure-menu menu-width-restricted">
+
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/revenue_calculation" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="site-content">
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <div class="pure-control-group">
+                <h3 class="fueling-header">Update gas station info</h3>
+            </div>
+
+            <div class="pure-control-group">
+                <label id="globalServerError" class="error"/>
+            </div>
+
+            <!--<%--Name--%>-->
+            <div class="pure-control-group">
+                <label for="name">Name</label>
+                <input type="text"
+                       id="name"
+                       placeholder="Name"
+                       ng-model="name"/>
+                <label id="nameError" class="error"/>
+            </div>
+
+            <!--<%--Address--%>-->
+            <div class="pure-control-group">
+                <label for="address">Address</label>
+                <input type="text"
+                       id="address"
+                       placeholder="Address"
+                       ng-model="address"/>
+                <label for="address" id="addressError" class="error"/>
+            </div>
+
+            <!--<%--Trademark--%>-->
+            <div class="pure-control-group">
+                <label for="companyName">Trademark</label>
+                <input type="text"
+                       id="companyName"
+                       placeholder="Trademark"
+                       ng-model="trademark"/>
+                <label id="companyNameError" class="error"/>
+            </div>
+
+            <!--<%--Submit button--%>-->
+            <div class="centeredInDiv">
+                <div class="pure-controls">
+                    <button type="submit"
+                            class="pure-button pure-button-primary"
+                            ng-click="SubmitUpdatedInfo()">Submit
+                    </button>
+                </div>
+            </div>
+
+            <!--<%--View gas stations--%>-->
+            <div class="pure-controls">
+                <a href="#/view_gasstations">List of gas stations</a>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<!--END: add gas station-->

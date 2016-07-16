@@ -1,0 +1,126 @@
+<div id="menu">
+    <div class="pure-menu menu-width-restricted">
+
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/business_dashboard" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="site-content" ng-controller="ViewVehiclesController">
+    <div class="pure-control-group">
+
+        <div id="dialog-confirm"
+             title="Delete vehicle?"
+             style="display: none">
+            <p><span class="ui-icon ui-icon-alert"
+                     style="display: block;float:left;margin:0 7px 20px 0;"></span>
+                The vehicle will be deleted. Are you sure?</p>
+        </div>
+
+        <div ng-if="forceToEnterVehicles">
+            <h1 class="fueling-header">Add information about your cars</h1>
+            <a href="#/add_vehicle">Add a car</a>
+        </div>
+
+        <div ng-if="!forceToEnterVehicles">
+            <h1 class="fueling-header">Your cars</h1>
+            <table class="pure-table" style="border-style: none;">
+
+                <th align="center" style="border-bottom: 1px solid white;"><span>Type</span></th>
+                <th align="center" style="border-bottom: 1px solid white;"><span>Volume</span></th>
+                <th align="center" style="border-bottom: 1px solid white;"><span>Number</span></th>
+                <th align="center" style="border-bottom: 1px solid white;"><span>Delete</span></th>
+
+                <tr style="margin-bottom: 20em" ng-repeat="vehicle in customerVehicles">
+                    <td><span>{{vehicle.carType.typeName}}</span></td>
+                    <td><span>{{vehicle.volume}}</span></td>
+                    <td><span>{{vehicle.registrationNumber}}</span></td>
+                    <td>
+                    <span>
+                        <a href="" ng-click="deleteVehicle(vehicle.id)">&#9747;
+                        </a>
+                    </span>
+                    </td>
+                </tr>
+            </table>
+            <div class="pure-controls">
+                <a href="#/add_vehicle">Add a car</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END: view vehicles-->

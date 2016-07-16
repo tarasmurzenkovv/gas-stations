@@ -1,0 +1,149 @@
+<div id="menu">
+     <div class="pure-menu menu-width-restricted">
+         
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">                                  
+
+                <li class="fixed-height">
+                <br/>
+
+                <div class="pure-menu-link">
+                    Hello, {{customerLogin}}
+                </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+         
+        </div>
+         
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">                                  
+
+                <li class="fixed-height">
+                <br/>
+
+                <div class="pure-menu-link">
+                    Hello, {{customerLogin}}
+                </div>
+
+                <li class="fixed-height">
+                    <a href="#/business_dashboard" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+                
+                <br/>
+
+                <li class="fixed-height">
+                <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--START: add vehicle-->
+<div class="site-content">
+    <h1 class="fueling-header">Add car info</h1>
+
+    <form class="pure-form pure-form-aligned" onload="populateCarTypes(); return true;">
+
+        <fieldset>
+            <!-- Global server error-->
+            <div class="pure-control-group">
+                <label id="globalServerError" class="error"/>
+            </div>
+
+            <!--<%--Enter car's engine volume--%>-->
+            <div class="pure-control-group">
+                <label for="volume">Engine volume</label>
+                <input type="number"
+                       step="0.1"
+                       max="20"
+                       id="volume"
+                       value=""
+                       placeholder="Engine volume"
+                       ng-model="volume"/>
+                <label id="volumeError" class="error"/>
+            </div>
+
+            <!--<%--Select car type--%>-->
+            <div class="pure-control-group">
+
+                <label for="carTypes">Select car type</label>
+                <select id="carTypes"
+                        ng-model="selectedVehicleType"
+                        ng-options="vehicleType.typeName for vehicleType in vehicleTypes">
+                </select>
+                <label id="carTypeError" class="error"/>
+            </div>
+
+            <!--<%--Registration number--%>-->
+            <div class="pure-control-group">
+                <label for="regnumber">Enter car's number</label>
+                <input type="text"
+                       id="regnumber"
+                       maxlength="10"
+                       pattern="[A-Z]{2}[0-9]{4}[A-Z]{2}"
+                       title="example: AA4444BB"
+                       placeholder="E.x. AA123456BB"
+                       ng-model="registrationNumber"/>
+                <label id="registrationNumberError" class="error"/>
+            </div>
+
+            <!--<%--Button--%>-->
+            <div class="centeredInDiv">
+                <div class="pure-controls">
+                    <button type="submit"
+                            class="pure-button pure-button-primary"
+                            ng-click="SendVehicleData()">Add vehicle
+                    </button>
+                </div>
+            </div>
+            <div class="pure-controls">
+                <a href="#/view_vehicles">Back to list of cars</a>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<!--END: add vehicle-->

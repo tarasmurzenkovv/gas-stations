@@ -1,0 +1,120 @@
+<div id="menu">
+    <div class="pure-menu menu-width-restricted">
+
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/revenue_calculation" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="site-content">
+    <div class="pure-control-group">
+        <label id="globalServerError" class="error"/>
+    </div>
+
+    <div ng-if="forceToEnterGasStations">
+        <h1 class="fueling-header">There are no gas stations in your network. </h1>
+        <a href="#/add_gasstation">Add a gas station to data base</a>
+    </div>
+    <div ng-if="!forceToEnterGasStations">
+        <div class="pure-control-group">
+            <h1 class="fueling-header">Your gas stations</h1>
+            <table class="pure-table" style="border-style: none;">
+
+                <th align="center" style="border-bottom: 1px solid white;"><span>Name</span></th>
+                <th align="center" style="border-bottom: 1px solid white;"><span>Address</span></th>
+                <th align="center" style="border-bottom: 1px solid white;"><span>Trademark</span></th>
+                <th align="center" style="border-bottom: 1px solid white;"><span>Action?</span></th>
+
+                <tr style="margin-bottom: 20em" ng-repeat="gasStation in customerGasStations">
+                    <td><span>{{gasStation.name}}</span></td>
+                    <td><span>{{gasStation.address}}</span></td>
+                    <td><span>{{gasStation.companyName}}</span></td>
+                    <td>
+                    <span>
+                        <a href="" ng-click="UpdateGasStation(gasStation.id)">Update info</a>
+                    </span>
+                    </td>
+                </tr>
+            </table>
+            <div class="pure-controls">
+                <a href="#/add_gasstation">Add a station</a>
+            </div>
+        </div>
+    </div>
+</div>
+

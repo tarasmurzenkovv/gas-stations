@@ -1,0 +1,1 @@
+var gasStation = angular.module('gasStation', ['ngRoute','ngCookies']);

@@ -1,0 +1,153 @@
+<div id="menu">
+    <div class="pure-menu menu-width-restricted">
+
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/revenue_calculation" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="site-content">
+
+    <h1 class="fueling-header">Revenue</h1>
+
+    <h3 class="fueling-header">Specify parameters</h3>
+    <br/>
+
+    <h3 class="fueling-header">{{message}}</h3>
+
+    <!--<%--Input params to calculate revenue--%>-->
+    <form class="pure-form pure-form-aligned">
+        <div class="pure-control-group">
+            <div class="pure-control-group">
+                <h3 class="error-text" id="restError"></h3>
+                <h3 class="error-text" id="globalServerError"></h3>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="from">From</label>
+                <input id="from" type="date" ng-model="from"/>
+                <label id="fromError" class="error"></label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="to">To</label>
+                <input id="to" type="date" ng-model="to"/>
+                <label id="toError" class="error"></label>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="gasStation">Gas station</label>
+                <select id="gasStation"
+                        ng-model="selectedGasStation"
+                        ng-options="gasStation.name for gasStation in customerGasStations">
+                    <option value="">Select gas station</option>
+                </select>
+                <label id="gasStationNameError" class="error"></label>
+            </div>
+
+            <div class="centeredInDiv">
+                <div class="pure-controls">
+                    <button type="submit"
+                            class="pure-button pure-button-primary"
+                            ng-click="ProcessRevenueRequest()">Calculate
+                    </button>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="pure-controls">
+                <h3 class="fueling-header" style="display: none" id="revenueTableHeader">Your revenue</h3>
+                <br/>
+
+                <div ng-if="displayRevenue">
+                    <table id="revenue" class="pure-table" style="border-style: none;">
+                        <tr>
+                            <th align="center" style="border-bottom: 1px solid white;"><span>Date</span></th>
+                            <th align="center" style="border-bottom: 1px solid white;"><span>Revenue</span></th>
+
+                        <tr style="margin-bottom: 20em" ng-repeat="revenue in customerRevenues">
+                            <td><span>{{revenue.dateOfRevenue}}</span></td>
+                            <td><span>{{revenue.revenueForDate}}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br/>
+</div>

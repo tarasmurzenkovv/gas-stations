@@ -1,0 +1,190 @@
+<div id="menu">
+    <div class="pure-menu menu-width-restricted">
+
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/business_dashboard" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--START: add fueling-->
+<div class="site-content">
+    <h1 class="fueling-header">Add fueling info</h1>
+
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+
+            <!--<%--Volume--%>-->
+            <div class="pure-control-group">
+                <label for="volume">Volume</label>
+                <input id="volume"
+                       type="number"
+                       placeholder="Volume in liters"
+                       min="0"
+                       step="0.1"
+                       ng-model="volume"/>
+                <label id="volumeError" class="error"></label>
+            </div>
+
+            <!--<%--Price--%>-->
+            <div class="pure-control-group">
+                <label for="price">Price</label>
+                <input id="price"
+                       type="number"
+                       placeholder="Price in UAH"
+                       min="0"
+                       step="0.01"
+                       ng-model="price"/>
+                <label id="priceError" class="error"></label>
+            </div>
+
+            <!--<%--Date--%>-->
+            <div class="pure-control-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" ng-model="date"/>
+                <label id="dateError" class="error"></label>
+            </div>
+
+            <!--<%--Comment--%>-->
+            <div class="pure-control-group">
+                <label for="comment">Comment</label>
+                <input type="text" id='comment' placeholder="Enter your comment" ng-model="comment"/>
+            </div>
+
+            <!--<%--Fueling type--%>-->
+            <div class="pure-control-group">
+                <label for="fuelType">Fuel type</label>
+                <select id="fuelType"
+                        ng-model="fuelType"
+                        ng-options="fuelType.typeName for fuelType in fuelTypes">
+                    <option value="">Select fuel type</option>
+                </select>
+                <label id="fuelTypeError" class="error"/>
+            </div>
+
+            <!--<%--Customer vehicles--%>-->
+            <div class="pure-control-group">
+                <label for="vehicle">Vehicle</label>
+                <select id="vehicle"
+                        ng-model="vehicle"
+                        ng-options="vehicle.registrationNumber for vehicle in customerVehicles">
+                    <option value="">Select vehicle</option>
+                </select>
+                <label id="vehicleRegistrationNumberError" class="error"/>
+            </div>
+
+            <!--<%--Customer vehicles--%>-->
+            <div class="pure-control-group">
+                <label for="vehicle">Gasstation</label>
+                <select id="gasStation"
+                        ng-model="gasStation"
+                        ng-options="gasStation.name for gasStation in gasStations">
+                    <option value="">Select gasstation</option>
+                </select>
+                <label id="gasStationNameError" class="error"/>
+            </div>
+
+            <!--<%--Customer rating--%>-->
+            <div class="pure-control-group">
+                <label for="rating">Rating</label>
+                <select id="rating" ng-model="rating">
+                    <option value="">Place a rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <label id="ratingError" class="error"/>
+            </div>
+
+            <div class="centeredInDiv">
+                <div class="pure-controls">
+                    <button type="submit"
+                            class="pure-button pure-button-primary"
+                            ng-click="AddFueling()">Add fueling
+                    </button>
+                </div>
+            </div>
+
+            <div class="pure-controls">
+                <a href="#/view_fuelings">List of fuelings</a>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<!--END: add fueling-->

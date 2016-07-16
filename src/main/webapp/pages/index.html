@@ -1,0 +1,58 @@
+<html ng-app='gasStation'>
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular-route.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular-cookies.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="/resources/js/mainAngular.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/MainController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/add_entity/addFuelingController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/add_entity/addGasStationController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/add_entity/addVehicleController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/security/registrationController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/security/loginController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/security/logoutController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/service/revenueCalculation.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/service/dashboardController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/update_entity/updateGasStationsController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/view_entities/viewFuelingsController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/view_entities/viewGasStationsController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/view_entities/viewVehiclesController.js"></script>
+    <script type="text/javascript" src="/resources/js/controllers/error_controller/errorController.js"></script>
+
+    <script type="text/javascript" src="/resources/js/routing_configuration/routing.js"></script>
+
+    <script type="text/javascript" src="/resources/js/model/Customer.js"></script>
+    <script type="text/javascript" src="/resources/js/model/GasStation.js"></script>
+
+    <!--Load services, see the list of the controllers to understand how they:
+        - are injected
+        - and defined
+    List of the controllers:
+    -->
+    <script type="text/javascript" src="/resources/js/service/CustomerService.js"></script>
+    <script type="text/javascript" src="/resources/js/service/GasStationService.js"></script>
+    <script type="text/javascript" src="/resources/js/service/FuelingService.js"></script>
+    <script type="text/javascript" src="/resources/js/service/VehicleService.js"></script>
+
+    <script type="text/javascript" src="/resources/js/service/errorHandling.js"></script>
+
+    <link rel="stylesheet" href="/resources/css/styles.css">
+    <link rel="stylesheet" href="/resources/css/menu.css">
+    <link rel="stylesheet" href="/resources/css/error.css">
+    <link rel="stylesheet" href="/resources/css/jquery.css">
+    <link rel="stylesheet" href="/resources/css/pure/pure-min.css">
+
+    <title>Gas Station Service</title>
+</head>
+    <body>
+        <div id="main-container">
+            <ng-view></ng-view>
+        </div>
+    </body>
+</html>

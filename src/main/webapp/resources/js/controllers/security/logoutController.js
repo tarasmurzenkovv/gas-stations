@@ -1,0 +1,1 @@
+gasStation.controller('LogoutController', ['$scope', function ($scope) {}]);

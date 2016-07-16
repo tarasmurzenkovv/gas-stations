@@ -1,0 +1,119 @@
+<div id="menu">
+    <div class="pure-menu menu-width-restricted">
+
+        <div ng-if="isRegular()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/search_gasstations" class="pure-menu-link">Search</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_fuelings" class="pure-menu-link">Fuelings</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_vehicles" class="pure-menu-link">Vehicles</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div ng-if="isBusiness()">
+            <span class="pure-menu-heading">
+                <a href="/">GSS <img src="/resources/img/gss-icon.png" width="24" height="24"/></a>
+            </span>
+
+            <ul class="pure-menu-list">
+
+                <li class="fixed-height">
+                    <br/>
+
+                    <div class="pure-menu-link">
+                        Hello, {{customerLogin}}
+                    </div>
+
+                <li class="fixed-height">
+                    <a href="#/revenue_calculation" class="pure-menu-link">Revenue</a>
+                </li>
+
+                <li class="fixed-height">
+                    <a href="#/view_gasstations" class="pure-menu-link">Stations</a>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <hr/>
+                </li>
+
+                <br/>
+
+                <li class="fixed-height">
+                    <a href="/logout" class="pure-menu-link">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="site-content">
+    <div class="pure-control-group">
+        <h1 class="fueling-header">Interesting gas stations</h1>
+
+
+        <form class="pure-form pure-form-aligned">
+            <div class="pure-control-group">
+                <h3 class="error-text" id="globalServerError"></h3>
+            </div>
+            <div class="pure-control-group">
+                <select id="fuelTypes"
+                        ng-model="selectedFuelType"
+                        ng-options="fuelType.typeName for fuelType in fuelTypes">
+                    <option value="">Select fuel type</option>
+                </select>
+            </div>
+            <div class="pure-control-group">
+                <button type="submit"
+                        class="pure-button pure-button-primary"
+                        ng-click="SearchGasStations()">Search
+                </button>
+            </div>
+        </form>
+        <table class="pure-table" style="border-style: none;" id="interestingGasStations" ng-show="showTable">
+            <th align="center" style="border-bottom: 1px solid white;"><span>Rated</span></th>
+            <th align="center" style="border-bottom: 1px solid white;"><span>Popular</span></th>
+            <th align="center" style="border-bottom: 1px solid white;"><span>Cheapest</span>
+
+                <tr style="margin-bottom: 20em">
+                    <td><span>{{rated}}</span></td>
+                    <td><span>{{popular}}</span></td>
+                    <td><span>{{cheapest}}</span></td>
+                </tr>
+        </table>
+    </div>
+</div>
