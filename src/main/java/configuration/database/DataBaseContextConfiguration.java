@@ -24,7 +24,7 @@ import java.util.Properties;
 public class DataBaseContextConfiguration {
     private final static int EXIT_STATUS_CODE = 666;
     private static final Logger logger = Logger.getLogger(DataBaseContextConfiguration.class);
-    
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -46,7 +46,7 @@ public class DataBaseContextConfiguration {
 
     @Bean
     public DataSource getDataSource() {
-        String dbUrl = System.getenv("JDBC_DATABASE_URL");
+        String dbUrl = System.getenv("JDBC_DATABASE_URL").split("?")[0];
         logger.error("Db url: " + dbUrl);
         String username = System.getenv("JDBC_DATABASE_USERNAME");
         String password = System.getenv("JDBC_DATABASE_PASSWORD");
