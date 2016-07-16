@@ -1,6 +1,10 @@
 <HTML>
 <HEAD>
+<<<<<<< HEAD
 	<TITLE>JBossEAP6.0 JSP snoop page</TITLE>
+=======
+	<TITLE>JBossAS7 JSP snoop page</TITLE>
+>>>>>>> 3cea3696939b0075a31ea5b10d3266a30aca9351
 	<%@ page import="javax.servlet.http.HttpUtils,java.util.Enumeration" %>
 	<%@ page import="java.lang.management.*" %>
 	<%@ page import="java.util.*" %>
