@@ -91,8 +91,6 @@ public class DataBaseContextConfiguration {
         String password = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
         properties.setProperty("hibernate.connection.url", dbUrl);
-        properties.setProperty("hibernate.connection.username", username);
-        properties.setProperty("hibernate.connection.password", password);
         return properties;
     }
 
