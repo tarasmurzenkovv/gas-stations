@@ -37,17 +37,7 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
         http.csrf().disable();
         http.sessionManagement().disable();
 
-        http.authorizeRequests()
-                .antMatchers(
-                        "/",
-                        "/index.html",
-                        "/customer_types",
-                        "/gender_groups",
-                        "/pages/public/**",
-                        "/resources/css/**",
-                        "/resources/img/**",
-                        "/resources/js/**")
-                .permitAll();
+        permitAccessToResources(http);
 
         http.authorizeRequests().antMatchers("/ajax_login", "logout").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/register").permitAll();
@@ -55,12 +45,7 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/gender_groups").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/ajax_login").permitAll();
 
-        http.authorizeRequests().antMatchers("/api/v2/api-docs").permitAll();
-        http.authorizeRequests().antMatchers("/swagger-ui.html").permitAll();
-        http.authorizeRequests().antMatchers("/webjars/springfox-swagger-ui/**").permitAll();
-        http.authorizeRequests().antMatchers("/configuration/ui").permitAll();
-        http.authorizeRequests().antMatchers("/swagger-resources").permitAll();
-        http.authorizeRequests().antMatchers("/v2/api-docs").permitAll();
+        permitAccessToSwaggerResources(http);
 
 
         http.authorizeRequests()
@@ -88,5 +73,28 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/pages/index.html");
 
         http.exceptionHandling().accessDeniedHandler(new AjaxAccessDeniedHandler());
+    }
+
+    private void permitAccessToResources(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers(
+                        "/",
+                        "/index.html",
+                        "/customer_types",
+                        "/gender_groups",
+                        "/pages/public/**",
+                        "/resources/css/**",
+                        "/resources/img/**",
+                        "/resources/js/**")
+                .permitAll();
+    }
+
+    private void permitAccessToSwaggerResources(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/api/v2/api-docs").permitAll();
+        http.authorizeRequests().antMatchers("/swagger-ui.html").permitAll();
+        http.authorizeRequests().antMatchers("/webjars/springfox-swagger-ui/**").permitAll();
+        http.authorizeRequests().antMatchers("/configuration/ui").permitAll();
+        http.authorizeRequests().antMatchers("/swagger-resources").permitAll();
+        http.authorizeRequests().antMatchers("/v2/api-docs").permitAll();
     }
 }
