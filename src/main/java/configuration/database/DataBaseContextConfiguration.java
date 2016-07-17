@@ -60,6 +60,7 @@ public class DataBaseContextConfiguration {
         basicDataSource.setUrl(dbUrl);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
+        basicDataSource.setValidationQuery("SELECT 1");
         return basicDataSource;
     }
 
