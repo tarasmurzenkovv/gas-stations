@@ -22,7 +22,7 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
             .when('/add_gasstation', {
                 templateUrl: '/pages/private/add_entity/add_gasstation.html',
                 controller: 'AddGasStationController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'REGULAR') {
@@ -33,12 +33,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/add_vehicle', {
                 templateUrl: '/pages/private/add_entity/add_vehicle.html',
                 controller: 'AddVehicleController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'BUSINESS') {
@@ -49,12 +49,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/add_fueling', {
                 templateUrl: '/pages/private/add_entity/add_fueling.html',
                 controller: 'AddFuelingController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'BUSINESS') {
@@ -66,12 +66,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/search_gasstations', {
                 templateUrl: '/pages/private/service/search_gasstation.html',
                 controller: 'SearchGasStations',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'BUSINESS') {
@@ -82,12 +82,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/revenue_calculation', {
                 templateUrl: '/pages/private/service/revenue_calculation.html',
                 controller: 'RevenueCalculation',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'REGULAR') {
@@ -99,7 +99,7 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/dashboard', {
                 templateUrl: '/pages/private/dashboard/dashboard.html',
@@ -108,7 +108,7 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
             .when('/view_fuelings', {
                 templateUrl: '/pages/private/view_entities/view_fuelings.html',
                 controller: 'ViewFuelingsController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'BUSINESS') {
@@ -120,12 +120,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/view_vehicles', {
                 templateUrl: '/pages/private/view_entities/view_vehicles.html',
                 controller: 'ViewVehiclesController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'BUSINESS') {
@@ -137,12 +137,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/view_gasstations', {
                 templateUrl: '/pages/private/view_entities/view_gasstations.html',
                 controller: 'ViewGasStationsController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'REGULAR') {
@@ -154,12 +154,12 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/update_gasstation', {
                 templateUrl: '/pages/private/update_entity/update_gasstation.html',
                 controller: 'UpdateGasStationsController',
-                resolve: {
+                /*resolve: {
                     validate: function ($q, $location, $rootScope) {
                         var validateAccess = $q.defer();
                         if ($rootScope.customerType === 'REGULAR') {
@@ -171,7 +171,7 @@ gasStation.config(['$routeProvider', '$httpProvider', '$locationProvider',
                         validateAccess.resolve();
                         return validateAccess.promise;
                     }
-                }
+                }*/
             })
             .when('/access_denied', {
                 templateUrl: '/pages/public/security/access_denied.html',
