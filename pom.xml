@@ -62,6 +62,7 @@
         <jackson-core.version>2.8.0</jackson-core.version>
         <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
         <jackson-annotations.version>2.5.0</jackson-annotations.version>
+        <jackson-databind.version>2.8.0</jackson-databind.version>
 
         <!--utils-->
         <commons-lang3.version>3.4</commons-lang3.version>
@@ -196,6 +197,11 @@
             <version>${log4j.version}</version>
         </dependency>
         <!--JSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
