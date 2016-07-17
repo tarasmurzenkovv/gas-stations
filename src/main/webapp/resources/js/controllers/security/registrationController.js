@@ -57,7 +57,6 @@ gasStation.controller('RegistrationController', ['$rootScope', '$scope', '$http'
                     }
                 })
                 .error(function(data) {
-                    $window.location.href = "http://" + $window.location.host + '/#/register';
                     displayErrorMessages(data);
                 });
         };
