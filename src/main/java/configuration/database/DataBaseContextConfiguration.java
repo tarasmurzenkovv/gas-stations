@@ -1,6 +1,7 @@
 package configuration.database;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+
+import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
@@ -9,17 +10,18 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("repository")
+@ContextConfiguration
 public class DataBaseContextConfiguration {
     private final static int EXIT_STATUS_CODE = 666;
     private static final Logger logger = Logger.getLogger(DataBaseContextConfiguration.class);
@@ -30,7 +32,9 @@ public class DataBaseContextConfiguration {
         entityManagerFactoryBean.setDataSource(getDataSource());
         entityManagerFactoryBean.setPackagesToScan("model");
         entityManagerFactoryBean.setPersistenceProvider(new HibernatePersistenceProvider());
-        entityManagerFactoryBean.setJpaPropertyMap(getHibernateProperties());
+        entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
+        Object file = entityManagerFactoryBean.getJpaPropertyMap().get("hibernate.hbm2ddl.import_files");
+        logger.error("Got the following file to export  " + file);
         return entityManagerFactoryBean;
     }
 
@@ -59,16 +63,15 @@ public class DataBaseContextConfiguration {
         basicDataSource.setUrl(dbUrl);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
-        basicDataSource.setValidationQuery("SELECT 1");
         return basicDataSource;
     }
 
 
-    private Map<String,?> getHibernateProperties() {
-        Map<String, String> properties = new HashMap<>();
-
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.hbm2ddl.auto", "validate");
+    private Properties getHibernateProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.import_files", "init_data.sql");
         return properties;
     }
 
