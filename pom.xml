@@ -24,7 +24,7 @@
         <jetty-runner-plugin.version>9.3.10.v20160621</jetty-runner-plugin.version>
 
         <!--spring-->
-        <spring-context.version>4.3.1.RELEASE</spring-context.version>
+        <spring-context.version>4.1.2.RELEASE</spring-context.version>
 
         <!--database-->
         <hibernate-core.version>5.2.1.Final</hibernate-core.version>
