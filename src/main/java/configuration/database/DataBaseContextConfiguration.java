@@ -4,7 +4,6 @@ package configuration.database;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -72,7 +71,7 @@ public class DataBaseContextConfiguration {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("hibernate.hbm2ddl.import_files", "test_data.sql");
+        properties.setProperty("hibernate.hbm2ddl.import_files", "init_data.sql");
         return properties;
     }
 
