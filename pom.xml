@@ -21,7 +21,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
-        <jetty-runner-plugin.version>9.4.0.M0</jetty-runner-plugin.version>
+        <jetty-runner-plugin.version>9.3.10.v20160621</jetty-runner-plugin.version>
 
         <!--spring-->
         <spring-context.version>4.3.1.RELEASE</spring-context.version>
