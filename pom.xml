@@ -27,9 +27,9 @@
         <spring-context.version>4.3.1.RELEASE</spring-context.version>
 
         <!--database-->
-        <hibernate-core.version>5.2.1.Final</hibernate-core.version>
-        <hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
-        <hibernate-c3p0.version>5.2.1.Final</hibernate-c3p0.version>
+        <hibernate-core.version>4.3.11.Final</hibernate-core.version>
+        <hibernate-entitymanager.version>4.3.11.Final</hibernate-entitymanager.version>
+        <hibernate-c3p0.version>4.3.11.Final</hibernate-c3p0.version>
         <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
         <mysql-connector.version>6.0.3</mysql-connector.version>
         <postgre-connector.version>9.1-901-1.jdbc4</postgre-connector.version>
