@@ -19,7 +19,7 @@ public class WebAppContextInitializer implements WebApplicationInitializer {
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("SpringDispatcher", dispatcherServlet);
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
+        dispatcher.addMapping("/*");
 
         servletContext.setInitParameter("spring.profiles.active", "dev");
     }
