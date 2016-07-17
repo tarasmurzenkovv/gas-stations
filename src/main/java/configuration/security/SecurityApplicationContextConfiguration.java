@@ -59,6 +59,8 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
         http.authorizeRequests().antMatchers("/swagger-ui.html").permitAll();
         http.authorizeRequests().antMatchers("/webjars/springfox-swagger-ui/**").permitAll();
         http.authorizeRequests().antMatchers("/configuration/ui").permitAll();
+        ///glacial-wave-61982/api/v2/api-docs
+        http.authorizeRequests().antMatchers("/glacial-wave-61982/api/v2/api-docs").permitAll();
 
 
         // /webjars/springfox-swagger-ui
