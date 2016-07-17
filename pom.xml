@@ -25,12 +25,13 @@
 
         <!--database-->
         <hibernate-core.version>5.2.1.Final</hibernate-core.version>
-        <hibernate-entitymanager.version>5.2.1.Final</hibernate-entitymanager.version>
+        <hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
         <hibernate-c3p0.version>5.2.1.Final</hibernate-c3p0.version>
         <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
         <mysql-connector.version>6.0.3</mysql-connector.version>
         <postgre-connector.version>9.1-901-1.jdbc4</postgre-connector.version>
         <c3p0.version>0.9.1.2</c3p0.version>
+        <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <hibernate-validator.version>5.3.0.Alpha1</hibernate-validator.version>
         <javax-validation-api.version>1.1.0.Final</javax-validation-api.version>
 
@@ -79,7 +80,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate-entitymanager.version}</version>
+            <version>5.1.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -111,6 +112,12 @@
             <artifactId>validation-api</artifactId>
             <version>${javax-validation-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2.version}</version>
+        </dependency>
+
         <!--web-->
         <dependency>
             <groupId>javax.el</groupId>
