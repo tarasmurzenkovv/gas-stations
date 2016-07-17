@@ -118,7 +118,6 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>${commons-dbcp2.version}</version>
         </dependency>
-
         <!--web-->
         <dependency>
             <groupId>javax.el</groupId>
@@ -203,7 +202,6 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotations.version}</version>
         </dependency>
-
         <!--utils-->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -221,7 +219,6 @@
             <version>${joda-time.version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
