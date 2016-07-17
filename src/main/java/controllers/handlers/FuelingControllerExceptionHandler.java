@@ -4,6 +4,7 @@ import controllers.exceptions.NoFuelingRecordsWereFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.Map;
 public class FuelingControllerExceptionHandler {
     private final static String GENERAL_ERROR_LABEL_NAME = "globalServerError";
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(NoFuelingRecordsWereFoundException.class)
+    @ExceptionHandler(NoFuelingRecordsWereFoundException.class)
     @ResponseBody
     public ResponseEntity<Map<String, String>> handleNoFuelingRecordsWereFoundException(NoFuelingRecordsWereFoundException e) {
         Map<String, String> errorFieldAndErrorMessage = new HashMap<>();

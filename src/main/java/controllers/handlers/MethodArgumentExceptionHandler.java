@@ -7,16 +7,17 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @ControllerAdvice
-public class ExceptionHandler {
+public class MethodArgumentExceptionHandler {
     private final static String ERROR_SUFFIX = "Error";
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public ResponseEntity<Map<String, String>> handleValidationException(MethodArgumentNotValidException e) {
         String errorFieldName;

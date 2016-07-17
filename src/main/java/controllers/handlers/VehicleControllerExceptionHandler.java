@@ -5,6 +5,7 @@ import controllers.exceptions.vehicle.VehicleExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ public class VehicleControllerExceptionHandler {
 
     private final static String GENERAL_ERROR_LABEL_NAME = "globalServerError";
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(NoVehiclesWereFound.class)
+    @ExceptionHandler(NoVehiclesWereFound.class)
     @ResponseBody
     public ResponseEntity<Map<String, String>> handleValidationException(NoVehiclesWereFound e) {
         Map<String, String> errorFieldAndErrorMessage = new HashMap<>();
