@@ -51,13 +51,13 @@ gasStation.controller('RegistrationController', ['$rootScope', '$scope', '$http'
                     customerInformation.setCustomerLogin($scope.login);
                     $rootScope.customerType = $scope.selectedCustomerType.typeName;
                     if ($scope.selectedCustomerType.typeName === "REGULAR") {
-                        $window.location.href = "http://" + $window.location.host + '/pages/index.html#/add_vehicle';
+                        $window.location.href = "http://" + $window.location.host + '/#/add_vehicle';
                     } else if ($scope.selectedCustomerType.typeName === "BUSINESS") {
-                        $window.location.href = "http://" + $window.location.host + '/pages/index.html#/add_gasstation';
+                        $window.location.href = "http://" + $window.location.host + '/#/add_gasstation';
                     }
                 })
                 .error(function(data) {
-                    $window.location.href = "http://" + $window.location.host + '/pages/index.html#/register';
+                    $window.location.href = "http://" + $window.location.host + '/#/register';
                     displayErrorMessages(data);
                 });
         };
