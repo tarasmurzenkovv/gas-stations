@@ -71,7 +71,6 @@ public class DataBaseContextConfiguration {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        properties.setProperty("hibernate.hbm2ddl.import_files", "init_data.sql");
         return properties;
     }
 
