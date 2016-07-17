@@ -24,6 +24,7 @@ public class WebContextConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/*").addResourceLocations("/resources/");
 
         registry.addResourceHandler("**/**").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
     }
 
     @Override
