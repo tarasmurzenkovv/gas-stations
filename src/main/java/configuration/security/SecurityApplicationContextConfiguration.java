@@ -57,6 +57,9 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
 
         http.authorizeRequests().antMatchers("/api/v2/api-docs").permitAll();
         http.authorizeRequests().antMatchers("/swagger-ui.html").permitAll();
+        http.authorizeRequests().antMatchers("//webjars/springfox-swagger-ui/**").permitAll();
+
+        // /webjars/springfox-swagger-ui
 
         http.authorizeRequests()
                 .antMatchers(
