@@ -31,8 +31,6 @@ public class DataBaseContextConfiguration {
         entityManagerFactoryBean.setPackagesToScan("model");
         entityManagerFactoryBean.setPersistenceProvider(new HibernatePersistenceProvider());
         entityManagerFactoryBean.setJpaPropertyMap(getHibernateProperties());
-        Object file = entityManagerFactoryBean.getJpaPropertyMap().get("hibernate.hbm2ddl.import_files");
-        logger.error("Got the following file to export  " + file);
         return entityManagerFactoryBean;
     }
 
