@@ -56,6 +56,7 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/ajax_login").permitAll();
 
         http.authorizeRequests().antMatchers("/api/v2/api-docs").permitAll();
+        http.authorizeRequests().antMatchers("/swagger-ui.html").permitAll();
 
         http.authorizeRequests()
                 .antMatchers(
