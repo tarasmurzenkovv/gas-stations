@@ -17,15 +17,15 @@ gasStation.controller('LoginController', ['$rootScope', '$scope', '$http', '$win
                     $scope.errorMessage = null;
                     if (response.customerType === 'REGULAR') {
                         if (response.numberOfEntries === 0) {
-                            $window.location.href = "http://" + $window.location.host + '/pages/index.html#/add_vehicle';
+                            $window.location.href = "http://" + $window.location.host + '/#/add_vehicle';
                         } else {
-                            $window.location.href = "http://" + $window.location.host + '/pages/index.html#/view_vehicles';
+                            $window.location.href = "http://" + $window.location.host + '/#/view_vehicles';
                         }
                     } else {
                         if (response.numberOfEntries === 0) {
-                            $window.location.href = "http://" + $window.location.host + '/pages/index.html#/add_gasstation';
+                            $window.location.href = "http://" + $window.location.host + '/#/add_gasstation';
                         } else {
-                            $window.location.href = "http://" + $window.location.host + '/pages/index.html#/view_gasstations';
+                            $window.location.href = "http://" + $window.location.host + '/#/view_gasstations';
                         }
                     }
                 })
