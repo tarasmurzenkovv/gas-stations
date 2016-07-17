@@ -82,8 +82,7 @@ public class SecurityApplicationContextConfiguration extends WebSecurityConfigur
                         "/view_gasstations",
                         "/update",
                         UPDATE_GASSTATION)
-                .hasAuthority("BUSINESS")
-                .anyRequest().fullyAuthenticated();
+                .hasAuthority("BUSINESS");
 
         http.httpBasic().authenticationEntryPoint(ajaxAuthorizationPoint);
 
