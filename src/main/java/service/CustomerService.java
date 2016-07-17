@@ -5,6 +5,7 @@ import controllers.auth.AuthenticatedCustomerInformationDto;
 import controllers.auth.NewCustomerInformationDto;
 import controllers.exceptions.CredentialsAreInDataBaseException;
 import model.*;
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +27,8 @@ import java.util.List;
 @Service
 @Transactional
 public class CustomerService {
+    private static final Logger log = Logger.getLogger(CustomerService.class);
+
     @Autowired
     private GasStationRepository gasStationRepository;
     @Autowired
@@ -56,11 +59,11 @@ public class CustomerService {
         return customer;
     }
 
-    public List<CustomerType> getAllCustomerTypes(){
+    public List<CustomerType> getAllCustomerTypes() {
         return customerTypeRepository.findAll();
     }
 
-    public void registerANewCustomer(NewCustomerInformationDto newCustomerInformationDto){
+    public void registerANewCustomer(NewCustomerInformationDto newCustomerInformationDto) {
         Customer customer = new Customer();
 
         if (customerRepository.checkIfLoginExistsInDatabase(newCustomerInformationDto.getLogin())) {
@@ -83,6 +86,8 @@ public class CustomerService {
                 customerTypeRepository.getByName("REGULAR") : customerTypeRepository.getByName("BUSINESS"));
         customer.setEnabled(true);
         customer.setPassword(bCryptPasswordEncoder.encode(newCustomerInformationDto.getPassword()));
+
+        log.info(String.format("About to register a new customer: %s", customer.toString()));
         customerRepository.save(customer);
 
         UserDetails userDetails = userDetailsServiceImplementation.loadUserByUsername(customer.getLogin());

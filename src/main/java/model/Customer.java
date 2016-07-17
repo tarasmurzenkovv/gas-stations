@@ -12,15 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/*
-
- You have to override the equals() and hashCode() methods if you:
-
-intend to put instances of persistent classes in a Set (the recommended way to represent many-valued associations); and
-intend to use reattachment of detached instances
-
-  */
-
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
