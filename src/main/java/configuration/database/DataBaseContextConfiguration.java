@@ -70,7 +70,7 @@ public class DataBaseContextConfiguration {
         Map<String, String> properties = new HashMap<>();
 
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.hbm2ddl.auto", "vallidate");
+        properties.put("hibernate.hbm2ddl.auto", "validate");
         //properties.put("hibernate.hbm2ddl.import_files", "init_data.sql");
         return properties;
     }
