@@ -15,7 +15,6 @@ class AdditionalPropertiesConfiguration {
     Properties getPostgreHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         return properties;
     }
 
@@ -25,7 +24,6 @@ class AdditionalPropertiesConfiguration {
     Properties getMySqlHibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
         return properties;
     }
 }

@@ -17,10 +17,10 @@ INSERT INTO car_type (id, type_name) VALUES (5, 'Renault');
 
 
 INSERT INTO customer (id, date_of_birth, e_mail, enabled, first_name, gender, last_name, login, password, customerType_id) 
-VALUES (1, '2016-02-29', 'regular@regular.com', '1', 'Blah', 'MALE', 'Blah', 'Blah', 'password', '1');
+VALUES (1, '2016-02-29', 'regular@regular.com', TRUE , 'Blah', 'MALE', 'Blah', 'Blah', 'password', '1');
 
 INSERT INTO customer (id, date_of_birth, e_mail, enabled, first_name, gender, last_name, login, password, customerType_id) 
-VALUES (2, '2016-02-29', 'business@business.com', '1', 'BlahBusiness', 'MALE', 'BlahBusiness', 'BlahBusiness', 'password', '2');
+VALUES (2, '2016-02-29', 'business@business.com', TRUE, 'BlahBusiness', 'MALE', 'BlahBusiness', 'BlahBusiness', 'password', '2');
 
 
 INSERT INTO vehicle (id, deleted, number, volume, cartype, customer) VALUES (1, FALSE, 'AA1111BB', 20, 1, 1);

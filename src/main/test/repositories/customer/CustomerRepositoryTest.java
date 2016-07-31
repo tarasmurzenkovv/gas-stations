@@ -15,6 +15,7 @@ import repository.CustomerTypeRepository;
 
 import java.util.Date;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -29,10 +30,9 @@ public class CustomerRepositoryTest {
 
     private Customer initCustomer(){
         Customer customer = new Customer();
-        customer.setId(1);
         customer.setCustomerType(customerTypeRepository.getByName("REGULAR"));
         customer.setDateOfBirth(new Date());
-        customer.setEmail("blah@blah.com");
+        customer.setEmail("regular@regular.com");
         customer.setPassword("password");
         customer.setFirstName("Blah");
         customer.setLastName("Blah");
@@ -49,7 +49,9 @@ public class CustomerRepositoryTest {
 
     @Test
     public void saveCustomer(){
-        assertTrue(this.initCustomer().equals(customerRepository.save(this.initCustomer())));
-    }
+        Customer expected = this.initCustomer();
+        Customer actual = customerRepository.getByLogin("Blah");
 
+        assertEquals(expected,actual);
+    }
 }

@@ -173,7 +173,7 @@ public class Customer implements Serializable {
                 ", dateOfBirth=" + dateOfBirth +
                 ", gender=" + gender +
                 ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
+                ", password= *********" +
                 ", customerType=" + customerType +
                 '}';
     }
@@ -185,24 +185,17 @@ public class Customer implements Serializable {
 
         Customer customer = (Customer) o;
 
-        if (!firstName.equals(customer.firstName)) return false;
-        if (!lastName.equals(customer.lastName)) return false;
-        if (!email.equals(customer.email)) return false;
-        if (gender != customer.gender) return false;
-        if (!login.equals(customer.login)) return false;
-        return customerType.equals(customer.customerType);
+        if (enabled != customer.enabled) return false;
+        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
+        return login != null ? login.equals(customer.login) : customer.login == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + dateOfBirth.hashCode();
-        result = 31 * result + gender.hashCode();
-        result = 31 * result + login.hashCode();
-        result = 31 * result + customerType.hashCode();
+        int result = (enabled ? 1 : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (login != null ? login.hashCode() : 0);
         return result;
     }
 }
