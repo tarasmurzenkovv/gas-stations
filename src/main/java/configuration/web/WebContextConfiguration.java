@@ -1,5 +1,7 @@
 package configuration.web;
 
+import configuration.database.DeployDataSourceConfiguration;
+import configuration.database.DevDataSourceConfiguration;
 import configuration.repository.RepositoryContextConfiguration;
 import configuration.security.PasswordEncoderBeanDeclaration;
 import configuration.security.SecurityApplicationContextConfiguration;
@@ -14,9 +16,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@Import({RepositoryContextConfiguration.class,
+@Import({
+        DeployDataSourceConfiguration.class,
+        DevDataSourceConfiguration.class,
+        RepositoryContextConfiguration.class,
         SecurityApplicationContextConfiguration.class,
-        PasswordEncoderBeanDeclaration.class, SwaggerConfiguration.class})
+        PasswordEncoderBeanDeclaration.class,
+        SwaggerConfiguration.class})
 @ComponentScan(basePackages = {"service", "controllers"})
 public class WebContextConfiguration extends WebMvcConfigurerAdapter {
 
