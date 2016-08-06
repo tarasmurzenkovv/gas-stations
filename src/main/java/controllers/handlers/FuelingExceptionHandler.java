@@ -1,6 +1,6 @@
 package controllers.handlers;
 
-import controllers.exceptions.InvalidFuelTypeException;
+import controllers.exceptions.FuelingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,14 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class InvalidFuelTypeExceptionHandler {
+public class FuelingControllerExceptionHandler {
     private final static String GENERAL_ERROR_LABEL_NAME = "globalServerError";
 
-    @ExceptionHandler(InvalidFuelTypeException.class)
+    @ExceptionHandler(FuelingException.class)
     @ResponseBody
-    public ResponseEntity<Map<String, String>> handleGasStationExistsException(InvalidFuelTypeException e) {
+    public ResponseEntity<Map<String, String>> handleNoFuelingRecordsWereFoundException(FuelingException e) {
         Map<String, String> errorFieldAndErrorMessage = new HashMap<>();
         errorFieldAndErrorMessage.put(GENERAL_ERROR_LABEL_NAME, e.getMessage());
-        return new ResponseEntity<>(errorFieldAndErrorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorFieldAndErrorMessage, HttpStatus.NOT_FOUND);
     }
 }

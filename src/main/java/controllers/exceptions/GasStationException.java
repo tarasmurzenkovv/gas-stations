@@ -2,8 +2,8 @@ package controllers.exceptions.gasstation;
 
 import controllers.exceptions.GeneralServerException;
 
-public class GasStationExistsException extends GeneralServerException {
-    public GasStationExistsException(String message) {
+public class GasStationException extends GeneralServerException {
+    public GasStationException(String message) {
         super(message);
     }
 }
