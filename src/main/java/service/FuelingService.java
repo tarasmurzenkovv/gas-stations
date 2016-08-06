@@ -3,6 +3,7 @@ package service;
 import configuration.security.AuthenticatedCustomer;
 import controllers.fueling.FuelingDto;
 import model.*;
+import model.type.FuelType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

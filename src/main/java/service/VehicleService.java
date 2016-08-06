@@ -1,11 +1,10 @@
 package service;
 
 import configuration.security.AuthenticatedCustomer;
-import controllers.exceptions.NoCarTypeWasFound;
-import controllers.exceptions.vehicle.NoVehicleFound;
-import controllers.exceptions.vehicle.VehicleExistsException;
+import controllers.exceptions.CarTypeException;
+import controllers.exceptions.VehicleException;
 import controllers.vehicle.VehicleDto;
-import model.CarType;
+import model.type.CarType;
 import model.Customer;
 import model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class VehicleService {
         carType = carTypeRepository.getByName(vehicleDto.getCarType());
 
         if (carType == null) {
-            throw new NoCarTypeWasFound("Unable to load car type for the provided string value: " + vehicleDto.getCarType());
+            throw new CarTypeException("Unable to load car type for the provided string value: " + vehicleDto.getCarType());
         }
 
         vehicle.setVolume(vehicleDto.getVolume());
@@ -46,7 +45,7 @@ public class VehicleService {
         vehicle.setCustomer(customer);
 
         if (customerRepository.getCustomerVehicles(customer).contains(vehicle)) {
-            throw new VehicleExistsException("You have already added such vehicle");
+            throw new VehicleException("You have already added such vehicle");
         }
 
         if(vehicleRepository.getByRegistrationNumber(vehicleDto.getRegistrationNumber()) != null){
@@ -58,7 +57,7 @@ public class VehicleService {
     public void deleteVehicle(Integer vehicleId){
         Vehicle vehicle = vehicleRepository.getOne(vehicleId);
         if (vehicle == null) {
-            throw new NoVehicleFound("There is no such vehicle for the given id: " + vehicleId);
+            throw new VehicleException("There is no such vehicle for the given id: " + vehicleId);
         }
         vehicle.setIsDeleted(true);
         vehicleRepository.save(vehicle);

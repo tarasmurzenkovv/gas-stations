@@ -1,8 +1,8 @@
 package controllers.exceptions;
 
-import model.CustomerType;
+import model.type.CustomerType;
 
-public class CustomerServiceException extends GeneralServerException {
+public class CustomerException extends GeneralServerException {
     private CustomerType customerType;
 
     public CustomerType getCustomerType() {
@@ -13,12 +13,7 @@ public class CustomerServiceException extends GeneralServerException {
         this.customerType = customerType;
     }
 
-    public CustomerServiceException(CustomerType customerType, String message) {
-        super(message);
-        this.customerType = customerType;
-    }
-
-    public CustomerServiceException(String message) {
+    public CustomerException(String message) {
         super(message);
     }
 }

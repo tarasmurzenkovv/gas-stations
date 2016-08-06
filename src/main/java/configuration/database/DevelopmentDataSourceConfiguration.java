@@ -15,9 +15,9 @@ import java.beans.PropertyVetoException;
 @Profile("dev")
 @Configuration
 @PropertySource("classpath:application.properties")
-public class DevDataSourceConfiguration {
+public class DevelopmentDataSourceConfiguration {
     private final static int EXIT_STATUS_CODE = 666;
-    private static final Logger logger = Logger.getLogger(DevDataSourceConfiguration.class);
+    private static final Logger logger = Logger.getLogger(DevelopmentDataSourceConfiguration.class);
     @Value("${jdbc.driver}")
     private String driverName;
     @Value("${jdbc.uri}")

@@ -1,6 +1,5 @@
 package controllers.handlers;
 
-import controllers.exceptions.vehicle.NoVehiclesWereFound;
 import controllers.exceptions.VehicleException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class VehicleControllerExceptionHandler {
+public class VehicleExceptionHandler {
 
     private final static String GENERAL_ERROR_LABEL_NAME = "globalServerError";
 
-    @ExceptionHandler(NoVehiclesWereFound.class)
+    @ExceptionHandler(VehicleException.class)
     @ResponseBody
-    public ResponseEntity<Map<String, String>> handleValidationException(NoVehiclesWereFound e) {
+    public ResponseEntity<Map<String, String>> handleValidationException(VehicleException e) {
         Map<String, String> errorFieldAndErrorMessage = new HashMap<>();
         errorFieldAndErrorMessage.put(GENERAL_ERROR_LABEL_NAME, e.getMessage());
         return new ResponseEntity<>(errorFieldAndErrorMessage, HttpStatus.BAD_REQUEST);

@@ -15,19 +15,19 @@ public class VehiclesController {
     private VehicleService vehicleService;
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/view_vehicles", method = RequestMethod.GET)
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
     public List<Vehicle> viewVehicles() {
         return vehicleService.getAuthenticatedCustomerVehicles();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/add_vehicle", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void addVehicle(@Valid @RequestBody VehicleDto vehicleDto) {
         vehicleService.processAddingANewVehicle(vehicleDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/delete_vehicle", params = {"id"}, method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete", params = {"id"}, method = RequestMethod.DELETE)
     public void deleteVehicle(@Valid @RequestParam("id") Integer vehicleId) {
         vehicleService.deleteVehicle(vehicleId);
     }

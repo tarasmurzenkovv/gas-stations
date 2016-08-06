@@ -1,7 +1,7 @@
 package controllers.exceptions;
 
-public class CredentialsAreInDataBaseException extends GeneralServerException {
-    public CredentialsAreInDataBaseException(String message) {
+public class AuthorizationException extends GeneralServerException {
+    public AuthorizationException(String message) {
         super(message);
     }
 }

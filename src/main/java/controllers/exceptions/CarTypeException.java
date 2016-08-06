@@ -1,7 +1,7 @@
 package controllers.exceptions;
 
-public class NoCarTypeWasFound extends GeneralServerException {
-    public NoCarTypeWasFound(String message) {
+public class CarTypeException extends GeneralServerException {
+    public CarTypeException(String message) {
         super(message);
     }
 }

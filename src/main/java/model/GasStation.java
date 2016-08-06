@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import service.Revenue;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,30 +12,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "gas_station")
-@SqlResultSetMapping(
-        name = "revenue",
-        classes = {
-                @ConstructorResult(
-                        targetClass = Revenue.class,
-                        columns = {
-                                @ColumnResult(name = "date"),
-                                @ColumnResult(name = "revenue")
-                        }
-                )
-        }
-)
-@NamedNativeQuery(name = "calculateRevenueForGasStationName",
-        query = "select fueling.date, fueling.price*fueling.volume as revenue from gas_station " +
-                "left join fueling " +
-                "on gas_station.id = fueling.gas_station " +
-                "where fueling.date between ?1 and ?2 and gas_station.name=?3 " +
-                "group by fueling.date",
-        resultSetMapping = "revenue")
 public class GasStation implements Serializable {
     @Id
     @GeneratedValue // default AUTO.
     @Column(name = "id")
-    private Integer id = new Integer(0);
+    private Integer id = 0;
 
     @NotEmpty(message = "Enter name")
     @Column(name = "name", nullable = false)

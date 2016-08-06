@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class FuelingControllerExceptionHandler {
+public class FuelingExceptionHandler {
     private final static String GENERAL_ERROR_LABEL_NAME = "globalServerError";
 
     @ExceptionHandler(FuelingException.class)

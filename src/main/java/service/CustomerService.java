@@ -3,8 +3,10 @@ package service;
 import configuration.security.UserDetailsServiceImplementation;
 import controllers.auth.AuthenticatedCustomerInformationDto;
 import controllers.auth.NewCustomerInformationDto;
-import controllers.exceptions.CredentialsAreInDataBaseException;
+import controllers.exceptions.AuthorizationException;
 import model.*;
+import model.type.CustomerType;
+import model.type.FuelType;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,11 +69,11 @@ public class CustomerService {
         Customer customer = new Customer();
 
         if (customerRepository.checkIfLoginExistsInDatabase(newCustomerInformationDto.getLogin())) {
-            throw new CredentialsAreInDataBaseException("Such login is in data base. Choose another one");
+            throw new AuthorizationException("Such login is in data base. Choose another one");
         }
 
         if (customerRepository.checkIfEmailExistsInDatabase(newCustomerInformationDto.getEmail())) {
-            throw new CredentialsAreInDataBaseException("Such email address is in data base. Choose another one.");
+            throw new AuthorizationException("Such email address is in data base. Choose another one.");
         }
 
         customer.setFirstName(newCustomerInformationDto.getFirstName());

@@ -1,7 +1,7 @@
 package repositories.types;
 
 import configuration.database.DataBaseContextConfiguration;
-import model.CarType;
+import model.type.CarType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

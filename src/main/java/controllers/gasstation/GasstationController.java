@@ -8,19 +8,23 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import repository.CustomerRepository;
 import service.GasStationService;
+import service.Revenue;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class GasstationController {
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
     @Autowired
     private GasStationService gasStationService;
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/view_gasstations", method = RequestMethod.GET)
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
     public List<GasStation> viewGasStations() {
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
         Customer customer = customerRepository.getByLogin(login);
@@ -28,7 +32,7 @@ public class GasstationController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/add_gasstation", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public void addGasStation(@Valid @RequestBody GasStationDto gasStationDto) {
         gasStationService.addGasStation(gasStationDto);
     }
@@ -43,6 +47,20 @@ public class GasstationController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void performUpdateInfo(@Valid @RequestBody GasStationDto gasStationDto) {
         gasStationService.performUpdate(gasStationDto);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/search", params = {"name"}, method = RequestMethod.GET)
+    public Map<String, GasStation> findGasStations(@Valid @RequestParam(value = "name") String fuelTypeName) {
+        return gasStationService.findRelevantGasStations(fuelTypeName);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/revenue", params = {"from", "to", "name"}, method = RequestMethod.GET)
+    public List<Revenue> calculateRevenue(@NotNull @RequestParam(value = "from") Date fromDate,
+                                          @NotNull @RequestParam(value = "to") Date toDate,
+                                          @NotNull @RequestParam(value = "name") String gasStationName) {
+        return gasStationService.calculateRevenueForDateInterval(gasStationName, fromDate, toDate);
     }
 
 }

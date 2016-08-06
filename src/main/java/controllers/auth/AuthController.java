@@ -1,7 +1,7 @@
 package controllers.auth;
 
 import model.Customer;
-import model.CustomerType;
+import model.type.CustomerType;
 import model.Gender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

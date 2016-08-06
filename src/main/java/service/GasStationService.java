@@ -1,11 +1,10 @@
 package service;
 
-import controllers.exceptions.BusinessCustomerServiceException;
-import controllers.exceptions.gasstation.GasStationExistsException;
-import controllers.exceptions.gasstation.NoGasStationFound;
+import controllers.exceptions.CustomerException;
+import controllers.exceptions.GasStationException;
 import controllers.gasstation.GasStationDto;
 import model.Customer;
-import model.FuelType;
+import model.type.FuelType;
 import model.GasStation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,11 +50,11 @@ public class GasStationService {
         logger.debug("Rest is being accessed. Calculating revenue for business type customer. ");
 
         if (from.after(to)) {
-            throw new BusinessCustomerServiceException("'From' date cannot be after 'to' date.");
+            throw new CustomerException("'From' date cannot be after 'to' date.");
         }
 
         if (gasStationRepository.checkIfGasStationNameExists(gasStationName)) {
-            throw new BusinessCustomerServiceException("No gas station was found for a given name: " + gasStationName);
+            throw new CustomerException("No gas station was found for a given name: " + gasStationName);
         }
 
         return gasStationRepository.calculateRevenueForGasStationName(
@@ -83,7 +82,7 @@ public class GasStationService {
         gasStation.setCustomer(customer);
 
         if (customer.getGasstations().contains(gasStation)) {
-            throw new GasStationExistsException("You have already added such gas station");
+            throw new GasStationException("You have already added such gas station");
         }
 
         gasStationRepository.save(gasStation);
@@ -98,7 +97,7 @@ public class GasStationService {
         gasStation.setCompanyName(gasStationDto.getCompanyName());
 
         if (customer.getGasstations().contains(gasStation)) {
-            throw new GasStationExistsException("Consider another naming");
+            throw new GasStationException("Consider another naming");
         }
 
         gasStationRepository.save(gasStation);
@@ -107,7 +106,7 @@ public class GasStationService {
     public GasStation loadInfo(Integer gasStationId) {
         GasStation gasStation = gasStationRepository.getOne(gasStationId);
         if (gasStation == null) {
-            throw new NoGasStationFound("No gas station was found for a given id: " + gasStationId);
+            throw new GasStationException("No gas station was found for a given id: " + gasStationId);
         }
         return gasStation;
     }

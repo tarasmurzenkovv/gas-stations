@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import model.type.CarType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;

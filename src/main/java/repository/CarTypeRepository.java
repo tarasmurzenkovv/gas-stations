@@ -1,7 +1,7 @@
 package repository;
 
 
-import model.CarType;
+import model.type.CarType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

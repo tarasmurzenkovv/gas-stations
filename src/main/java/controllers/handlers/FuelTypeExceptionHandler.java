@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class InvalidFuelTypeExceptionHandler {
+public class FuelTypeExceptionHandler {
     private final static String GENERAL_ERROR_LABEL_NAME = "globalServerError";
 
     @ExceptionHandler(FuelTypeException.class)

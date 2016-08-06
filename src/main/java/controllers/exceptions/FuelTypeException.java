@@ -1,7 +1,7 @@
 package controllers.exceptions;
 
-public class InvalidFuelTypeException extends IllegalArgumentException {
-    public InvalidFuelTypeException(String message) {
+public class FuelTypeException extends IllegalArgumentException {
+    public FuelTypeException(String message) {
         super(message);
     }
 }

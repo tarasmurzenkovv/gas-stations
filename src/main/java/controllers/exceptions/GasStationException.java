@@ -1,6 +1,4 @@
-package controllers.exceptions.gasstation;
-
-import controllers.exceptions.GeneralServerException;
+package controllers.exceptions;
 
 public class GasStationException extends GeneralServerException {
     public GasStationException(String message) {

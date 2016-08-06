@@ -1,6 +1,6 @@
 package controllers.fueltype;
 
-import model.FuelType;
+import model.type.FuelType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class FuelTypeController {
 
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/get_all_fuel_types", method = RequestMethod.GET)
+    @RequestMapping(value = "/fuel_types", method = RequestMethod.GET)
     public List<FuelType> getAllFuelTypes() {
         return fuelTypeRepository.findAll();
     }

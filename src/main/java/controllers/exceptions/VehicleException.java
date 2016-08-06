@@ -1,9 +1,7 @@
-package controllers.exceptions.vehicle;
+package controllers.exceptions;
 
-import controllers.exceptions.GeneralServerException;
-
-public class VehicleExistsException extends GeneralServerException {
-    public VehicleExistsException(String message) {
+public class VehicleException extends GeneralServerException {
+    public VehicleException(String message) {
         super(message);
     }
 }

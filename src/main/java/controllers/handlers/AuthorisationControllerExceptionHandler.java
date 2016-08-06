@@ -1,6 +1,6 @@
 package controllers.handlers;
 
-import controllers.exceptions.CredentialsAreInDataBaseException;
+import controllers.exceptions.AuthorizationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,9 +24,9 @@ public class AuthorisationControllerExceptionHandler {
         return new ResponseEntity<>(errorFieldAndErrorMessage, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(CredentialsAreInDataBaseException.class)
+    @ExceptionHandler(AuthorizationException.class)
     @ResponseBody
-    public ResponseEntity<Map<String, String>> credentialsAreInDataBasesException(CredentialsAreInDataBaseException e) {
+    public ResponseEntity<Map<String, String>> credentialsAreInDataBasesException(AuthorizationException e) {
         Map<String, String> errorFieldAndErrorMessage = new HashMap<>();
         errorFieldAndErrorMessage.put(GENERAL_ERROR_LABEL_NAME, e.getMessage());
         return new ResponseEntity<>(errorFieldAndErrorMessage, HttpStatus.NOT_FOUND);
