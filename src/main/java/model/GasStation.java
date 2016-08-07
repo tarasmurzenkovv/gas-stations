@@ -22,7 +22,7 @@ public class GasStation implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "gasStation", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "gasStation", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Fueling> fuelings = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class GasStation implements Serializable {
     private String companyName;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer")
     private Customer customer;
 

@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import repository.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +63,7 @@ public class FuelingService {
     public List<FuelingDto> getFuelingsPerPages(Integer pageNumber) {
         Customer customer = this.authenticatedCustomer.getAuthenticatedCustomer();
 
-        return customerService.getFuelingsPerPage(customer, pageNumber)
+/*        return customerService.getFuelingsPerPage(customer, pageNumber)
                 .stream()
                 .map(fueling -> {
                     FuelingDto fuelingDto = new FuelingDto();
@@ -75,7 +76,9 @@ public class FuelingService {
                     fuelingDto.setDate(fueling.getDate());
                     fuelingDto.setRating(fueling.getRating());
                     return fuelingDto;
-                }).collect(Collectors.toList());
+                }).collect(Collectors.toList());*/
+
+        return new ArrayList<>();
     }
 
     public Integer getNumberOfPages() {

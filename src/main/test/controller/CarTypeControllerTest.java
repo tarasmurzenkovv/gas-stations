@@ -17,7 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import service.CustomerService;
+import repository.CarTypeRepository;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
@@ -25,17 +25,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static util.TypesBuilder.getCustomerTypes;
+import static util.TypesBuilder.getCarTypes;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebContextConfiguration.class)
 @ActiveProfiles("dev")
 @WebAppConfiguration
-public class CustomerTypeControllerTest {
+public class CarTypeControllerTest {
     @Autowired
     private WebApplicationContext wac;
     @Mock
-    private CustomerService customerService;
+    private CarTypeRepository carTypeRepository;
     @InjectMocks
     private CustomerController customerController;
     private MockMvc mockMvc;
@@ -47,17 +47,16 @@ public class CustomerTypeControllerTest {
     }
 
     @Test
-    public void testGetCustomerTypes() throws Exception {
-        when(customerService.getAllCustomerTypes()).thenReturn(getCustomerTypes());
+    public void testGetCarTypes() throws Exception {
+        when(carTypeRepository.findAll()).thenReturn(getCarTypes());
 
-        this.mockMvc.perform(get("/customer_types")
+        this.mockMvc.perform(get("/car/types")
                 .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(jsonPath("$[0].id", is(1)))
-                .andExpect(jsonPath("$[0].typeName", is("REGULAR")))
+                .andExpect(jsonPath("$[0].typeName", is("Toyota")))
                 .andExpect(jsonPath("$[1].id", is(2)))
-                .andExpect(jsonPath("$[1].typeName", is("BUSINESS")));
+                .andExpect(jsonPath("$[1].typeName", is("Mercedes")));
     }
-
 }
