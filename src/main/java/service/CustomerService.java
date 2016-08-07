@@ -98,45 +98,4 @@ public class CustomerService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
-
-    /**
-     * Finds the gas station where the maximum number of customers was served per given {@code Date date}.
-     *
-     * @return - {@code GasStation}.
-     */
-    public GasStation getTheMostPopularGasStation() {
-        GasStation theMostPopularGasStation = new GasStation();
-
-
-        return theMostPopularGasStation;
-    }
-
-    /**
-     * Finds the gas station that has the least average price of gas. {@code Date date}.
-     *
-     * @param fuelType type of fuel
-     * @return - {@code GasStation}.
-     */
-    public GasStation getLeastExpensiveGasStation(FuelType fuelType) {
-        GasStation leastExpensiveGasStationByFuelType = new GasStation();
-
-        return leastExpensiveGasStationByFuelType;
-    }
-
-    /**
-     * Finds the gas station that has the most average customer rating
-     *
-     * @return - {@code GasStation}.
-     */
-    public GasStation getTheMostRatedGasStation() {
-        GasStation theMostRatedGasStation = new GasStation();
-
-
-        return theMostRatedGasStation;
-    }
-
-    public List<Fueling> getFuelingsPerPage(Customer customer, Integer pageNumber) {
-        PageRequest pageRequest = new PageRequest(pageNumber - 1, pageNumber, Sort.Direction.DESC, "price");
-        return customerRepository.getFuelingsPageble(customer, pageRequest);
-    }
 }

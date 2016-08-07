@@ -4,10 +4,13 @@ import controllers.exceptions.CustomerException;
 import controllers.exceptions.GasStationException;
 import controllers.gasstation.GasStationDto;
 import model.Customer;
+import model.Fueling;
 import model.type.FuelType;
 import model.GasStation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,8 +42,6 @@ public class GasStationService {
     private GasStationRepository gasStationRepository;
     @Autowired
     private CustomerRepository customerRepository;
-    @Autowired
-    private CustomerService customerService;
     @Autowired
     private FuelTypeRepository fuelTypeRepository;
 
@@ -115,9 +116,50 @@ public class GasStationService {
         Map<String, GasStation> interestingGasStations = new HashMap<>();
         FuelType fuelType = fuelTypeRepository.getByName(fuelTypeName);
 
-        interestingGasStations.put("cheapest", customerService.getLeastExpensiveGasStation(fuelType));
-        interestingGasStations.put("rated", customerService.getTheMostPopularGasStation());
-        interestingGasStations.put("popular", customerService.getTheMostRatedGasStation());
+        interestingGasStations.put("cheapest", this.getLeastExpensiveGasStation(fuelType));
+        interestingGasStations.put("rated", this.getTheMostPopularGasStation());
+        interestingGasStations.put("popular", this.getTheMostRatedGasStation());
         return interestingGasStations;
+    }
+
+    /**
+     * Finds the gas station where the maximum number of customers was served per given {@code Date date}.
+     *
+     * @return - {@code GasStation}.
+     */
+    public GasStation getTheMostPopularGasStation() {
+        GasStation theMostPopularGasStation = new GasStation();
+
+
+        return theMostPopularGasStation;
+    }
+
+    /**
+     * Finds the gas station that has the least average price of gas. {@code Date date}.
+     *
+     * @param fuelType type of fuel
+     * @return - {@code GasStation}.
+     */
+    public GasStation getLeastExpensiveGasStation(FuelType fuelType) {
+        GasStation leastExpensiveGasStationByFuelType = new GasStation();
+
+        return leastExpensiveGasStationByFuelType;
+    }
+
+    /**
+     * Finds the gas station that has the most average customer rating
+     *
+     * @return - {@code GasStation}.
+     */
+    public GasStation getTheMostRatedGasStation() {
+        GasStation theMostRatedGasStation = new GasStation();
+
+
+        return theMostRatedGasStation;
+    }
+
+    public List<Fueling> getFuelingsPerPage(Customer customer, Integer pageNumber) {
+        PageRequest pageRequest = new PageRequest(pageNumber - 1, pageNumber, Sort.Direction.DESC, "price");
+        return customerRepository.getFuelingsPageble(customer, pageRequest);
     }
 }
