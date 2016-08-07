@@ -1,7 +1,7 @@
 package controller;
 
 import configuration.web.WebContextConfiguration;
-import controllers.auth.AuthController;
+import controllers.customer.CustomerController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +37,7 @@ public class CustomerTypeControllerTest {
     @Mock
     private CustomerService customerService;
     @InjectMocks
-    private AuthController authController;
+    private CustomerController customerController;
     private MockMvc mockMvc;
 
     @Before

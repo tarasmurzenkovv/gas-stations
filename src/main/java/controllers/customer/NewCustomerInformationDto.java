@@ -1,4 +1,4 @@
-package controllers.auth;
+package controllers.customer;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.Email;

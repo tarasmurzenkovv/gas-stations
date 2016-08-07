@@ -1,9 +1,8 @@
-package controllers.auth;
+package controllers.customer;
 
 import model.Customer;
 import model.type.CustomerType;
 import model.Gender;
-import model.type.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class AuthController {
+public class CustomerController {
     // store cookie for a one day
     private final static int COOKIE_MAX_AGE = 24 * 60 * 60;
     @Autowired

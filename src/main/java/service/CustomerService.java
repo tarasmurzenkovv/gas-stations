@@ -1,13 +1,12 @@
 package service;
 
 import configuration.security.UserDetailsServiceImplementation;
-import controllers.auth.AuthenticatedCustomerInformationDto;
-import controllers.auth.NewCustomerInformationDto;
+import controllers.customer.AuthenticatedCustomerInformationDto;
+import controllers.customer.NewCustomerInformationDto;
 import controllers.exceptions.AuthorizationException;
 import model.*;
 import model.type.CustomerType;
 import model.type.FuelType;
-import model.type.Type;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import repository.CustomerRepository;
 import repository.CustomerTypeRepository;
-import repository.GasStationRepository;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

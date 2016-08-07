@@ -1,4 +1,4 @@
-package controllers.auth;
+package controllers.customer;
 
 
 /**
