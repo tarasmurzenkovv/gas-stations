@@ -33,7 +33,7 @@ public class FuelingService {
     @Autowired
     private Integer numberOfEntriesToDisplay;
 
-    public void addANewFueling(FuelingDto fuelingDto){
+    public void addANewFueling(FuelingDto fuelingDto) {
         Fueling fueling = new Fueling();
         Customer customer = authenticatedCustomer.getAuthenticatedCustomer();
         FuelType fuelType = fuelTypeRepository.getByName(fuelingDto.getFuelType());
@@ -51,7 +51,7 @@ public class FuelingService {
         fuellingRepository.save(fueling);
     }
 
-    public Map<String, Object> getData(){
+    public Map<String, Object> getData() {
         Map<String, Object> data = new HashMap<>();
         data.put("vehicles", customerRepository.getCustomerVehicles(authenticatedCustomer.getAuthenticatedCustomer()));
         data.put("fuel_types", fuelTypeRepository.findAll());
@@ -59,9 +59,8 @@ public class FuelingService {
         return data;
     }
 
-    public List<FuelingDto> getFuelingsPerPages(Integer pageNumber){
-        String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        Customer customer = customerRepository.getByLogin(login);
+    public List<FuelingDto> getFuelingsPerPages(Integer pageNumber) {
+        Customer customer = this.authenticatedCustomer.getAuthenticatedCustomer();
 
         return customerService.getFuelingsPerPage(customer, pageNumber)
                 .stream()
@@ -79,14 +78,14 @@ public class FuelingService {
                 }).collect(Collectors.toList());
     }
 
-    public Integer getNumberOfPages(){
+    public Integer getNumberOfPages() {
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
         Customer customer = customerRepository.getByLogin(login);
         int numberOfFuelings = customerRepository.numberOfFuelings(customer);
         return numberOfFuelings / numberOfEntriesToDisplay + (numberOfFuelings % numberOfEntriesToDisplay == 0 ? 0 : 1);
     }
 
-    public  void markFuelingEntryAsDeleted(Integer fuelingId){
+    public void markFuelingEntryAsDeleted(Integer fuelingId) {
         Fueling foundFueling = fuellingRepository.getOne(fuelingId);
         foundFueling.setDeleted(true);
         fuellingRepository.save(foundFueling);

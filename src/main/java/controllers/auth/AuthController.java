@@ -3,6 +3,7 @@ package controllers.auth;
 import model.Customer;
 import model.type.CustomerType;
 import model.Gender;
+import model.type.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;

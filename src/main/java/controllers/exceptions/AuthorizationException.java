@@ -1,6 +1,6 @@
 package controllers.exceptions;
 
-public class AuthorizationException extends GeneralServerException {
+public class AuthorizationException extends RuntimeException {
     public AuthorizationException(String message) {
         super(message);
     }

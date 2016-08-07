@@ -12,13 +12,14 @@ import repository.FuelTypeRepository;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/fuel")
 public class FuelTypeController {
     @Autowired
     private FuelTypeRepository fuelTypeRepository;
 
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/fuel_types", method = RequestMethod.GET)
+    @RequestMapping(value = "/types", method = RequestMethod.GET)
     public List<FuelType> getAllFuelTypes() {
         return fuelTypeRepository.findAll();
     }

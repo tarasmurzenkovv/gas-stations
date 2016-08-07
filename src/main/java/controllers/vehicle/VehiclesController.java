@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/vehicle")
 public class VehiclesController {
     @Autowired
     private VehicleService vehicleService;

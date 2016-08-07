@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping(value = "/station")
 public class GasstationController {
     @Autowired
     private CustomerRepository customerRepository;

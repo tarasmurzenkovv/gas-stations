@@ -12,14 +12,14 @@ import repository.CarTypeRepository;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/car")
 public class CarTypeController {
     @Autowired
     private CarTypeRepository carTypeRepository;
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/vehicle_types", method = RequestMethod.GET)
+    @RequestMapping(value = "/types", method = RequestMethod.GET)
     public List<CarType> carTypes() {
         return carTypeRepository.findAll();
     }
-
 }

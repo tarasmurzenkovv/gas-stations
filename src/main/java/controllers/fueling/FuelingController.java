@@ -10,12 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping(value = "/fuelling")
 public class FuelingController {
     @Autowired
     private FuelingService fuelingService;
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/fetch_data", method = RequestMethod.GET)
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
     public Map<String, Object> getData() {
         return fuelingService.getData();
     }

@@ -7,6 +7,7 @@ import controllers.exceptions.AuthorizationException;
 import model.*;
 import model.type.CustomerType;
 import model.type.FuelType;
+import model.type.Type;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,6 @@ import java.util.List;
 public class CustomerService {
     private static final Logger log = Logger.getLogger(CustomerService.class);
 
-    @Autowired
-    private GasStationRepository gasStationRepository;
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired

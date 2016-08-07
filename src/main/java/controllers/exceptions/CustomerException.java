@@ -2,7 +2,7 @@ package controllers.exceptions;
 
 import model.type.CustomerType;
 
-public class CustomerException extends GeneralServerException {
+public class CustomerException extends RuntimeException {
     private CustomerType customerType;
 
     public CustomerType getCustomerType() {
